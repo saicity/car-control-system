@@ -35,6 +35,15 @@ Transmission::Transmission(int currentGear, bool highThrottlePosition, bool cold
   }
 }
 
+Transmission::Transmission(const Transmission& t)
+{
+  currentGear = t.currentGear;
+  coldTemperature = t.coldTemperature;
+  highThrottlePosition = t.highThrottlePosition;
+  steadyPosition = t.steadyPosition;
+  transmissionMode = t.transmissionMode;
+}
+
 void Transmission::setCurrentGear(int currentGear)
 {
   if (currentGear < 1 || currentGear > 5)
@@ -61,6 +70,11 @@ void Transmission::setColdTemperature(bool coldTemperature)
 void Transmission::setSteadyPosition(bool steadyPosition)
 {
   this->steadyPosition = steadyPosition;
+}
+
+void Transmission::setTransmissionMode(std::string transmissionMode)
+{
+  this->transmissionMode = transmissionMode;
 }
 
 void Transmission::reccomendGear()
@@ -114,3 +128,32 @@ bool Transmission::getSteadyPosition() const
   return steadyPosition;
 }
 
+std::string Transmission::getTransmissionMode() const
+{
+  return transmissionMode;
+}
+
+std::ostream& operator<<(std::ostream& os, const Transmission& t)
+{
+  os << "Transmission Mode: " << t.getTransmissionMode() << '\n';
+  os << "Current Gear: " << t.getCurrentGear() << '\n';
+  os << "High Throttle Position: ";
+  if (t.getHighThrottlePosition() == true)
+  {
+    os << "True\n";
+  }
+  else
+  {
+    os << "False\n";
+  }
+  os << "Cold Temperature Outside: ";
+  if (t.getColdTemperature() == true)
+  {
+    os << "True\n";
+  }
+  else
+  {
+    os << "False\n";
+  }
+  return os;
+}
