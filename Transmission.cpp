@@ -94,9 +94,23 @@ void Transmission::reccomendGear()
   }
 }
 
-int Transmission::getCurrentGear()
+int Transmission::getCurrentGear() const
 {
   return currentGear;
 }
 
+bool Transmission::getHighThrottlePosition() const
+{
+  return highThrottlePosition;
+}
+
+bool Transmission::getColdTemperature() const
+{
+  return coldTemperature;
+}
+
+bool Transmission::getSteadyPosition() const
+{
+  return steadyPosition;
+}
 
