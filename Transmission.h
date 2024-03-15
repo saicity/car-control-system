@@ -20,7 +20,10 @@
     void setColdTemperature(bool coldTemperature);
     void setSteadyPosition(bool steadyPosition);
     void reccomendGear();
-    int getCurrentGear();
+    int getCurrentGear() const;
+    bool getHighThrottlePosition() const;
+    bool getColdTemperature() const;
+    bool getSteadyPosition() const;
   };
 
   std::ostream& operator<<(std::ostream& os, const Transmission& t);
